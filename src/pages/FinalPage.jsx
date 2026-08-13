@@ -23,7 +23,7 @@ function FinalPage() {
         </p>
 
         <h1>
-          Just for you, Mahi.
+          Just for you, Priyo.
         </h1>
 
         <p className="final-message">
@@ -36,12 +36,12 @@ function FinalPage() {
         <div className="final-divider" />
 
         <h2>
-          With all my love, Kabi
+          With all my love and care, Soumyadip
           <span>💕</span>
         </h2>
 
         <p className="final-footer-text">
-          HAPPY BIRTHDAY · YOU ARE SO LOVED · ALWAYS
+          HAPPY BIRTHDAY Priyani· YOU ARE SO LOVED · ALWAYS
         </p>
 
       </section>
@@ -53,7 +53,7 @@ function FinalPage() {
 
       {/* Bottom */}
       <div className="final-bottom">
-        MADE WITH LOVE · FOREVER
+        MADE WITH LOVE by SOUMYADIP · FOREVER
       </div>
 
     </main>
