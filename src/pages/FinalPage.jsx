@@ -53,7 +53,7 @@ function FinalPage() {
 
       {/* Bottom */}
       <div className="final-bottom">
-        MADE WITH LOVE by SOUMYADIP · FOREVER
+        MADE WITH LOVE by SOUMYADIP MAITY · FOREVER
       </div>
 
     </main>
