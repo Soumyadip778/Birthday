@@ -1,0 +1,536 @@
+/* =========================
+   MAIN WRAPPER
+========================= */
+
+.romantic-card-wrapper {
+  position: relative;
+  z-index: 10;
+
+  min-height: 100dvh;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: clamp(12px, 3vw, 30px);
+
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   MAIN GLASS CARD
+========================= */
+
+.romantic-card {
+  width: min(900px, 95vw);
+
+  display: flex;
+
+  padding: clamp(12px, 2vw, 18px);
+
+  border-radius: 32px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.28),
+      rgba(255, 255, 255, 0.12)
+    );
+
+  border: 1px solid rgba(255, 255, 255, 0.4);
+
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+
+  box-shadow:
+    0 30px 80px rgba(130, 20, 60, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+
+  color: #5a1836;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   PHOTO SECTION
+========================= */
+
+.photo-section {
+  width: 50%;
+
+  padding: 18px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   PHOTO
+========================= */
+
+.photo-frame {
+  width: 100%;
+
+  height: clamp(230px, 38vh, 390px);
+
+  overflow: hidden;
+
+  border-radius: 24px;
+
+  border: 2px solid rgba(255, 255, 255, 0.45);
+
+  box-shadow:
+    0 15px 40px rgba(100, 10, 40, 0.25);
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+
+  transition: transform 0.6s ease;
+}
+
+.photo-frame:hover img {
+  transform: scale(1.05);
+}
+
+
+/* =========================
+   PHOTO CAPTION
+========================= */
+
+.photo-caption {
+  text-align: center;
+
+  padding: 20px 10px 5px;
+}
+
+.photo-caption h2 {
+  margin: 0;
+
+  color: #5a1836;
+
+  font-family: Georgia, serif;
+
+  font-size: clamp(20px, 2.5vw, 26px);
+
+  font-weight: 600;
+
+  text-shadow:
+    0 2px 10px rgba(120, 20, 50, 0.2);
+}
+
+.photo-caption p {
+  margin: 8px auto 0;
+
+  max-width: 350px;
+
+  font-size: clamp(12px, 1.5vw, 14px);
+
+  line-height: 1.6;
+
+  color: rgba(90, 24, 54, 0.75);
+}
+
+
+/* =========================
+   DIVIDER
+========================= */
+
+.card-divider {
+  width: 1px;
+
+  margin: 35px 0;
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent,
+      rgba(255, 255, 255, 0.55),
+      transparent
+    );
+}
+
+
+/* =========================
+   PASSCODE SECTION
+========================= */
+
+.passcode-section {
+  width: 50%;
+
+  padding: clamp(15px, 3vw, 25px);
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   PASSCODE HEADING
+========================= */
+
+.passcode-heading {
+  text-align: center;
+}
+
+.passcode-heading span {
+  color: rgba(90, 24, 54, 0.65);
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 3px;
+}
+
+.passcode-heading h1 {
+  margin: 9px 0 0;
+
+  color: #5a1836;
+
+  font-family: Georgia, serif;
+
+  font-size: clamp(28px, 4vw, 38px);
+
+  font-weight: 600;
+
+  text-shadow:
+    0 3px 15px rgba(120, 20, 50, 0.2);
+}
+
+.passcode-heading p {
+  margin: 10px 0 0;
+
+  color: rgba(90, 24, 54, 0.75);
+
+  font-size: 13px;
+}
+
+
+/* =========================
+   PASSWORD DOTS
+========================= */
+
+.password-dots {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 14px;
+
+  margin: 25px 0 10px;
+}
+
+.password-dot {
+  width: 11px;
+  height: 11px;
+
+  border-radius: 50%;
+
+  border: 1.5px solid rgba(90, 24, 54, 0.7);
+
+  background: transparent;
+
+  transition: 0.2s ease;
+}
+
+.password-dot.filled {
+  background: #5a1836;
+
+  transform: scale(1.15);
+
+  box-shadow:
+    0 0 12px rgba(90, 24, 54, 0.4);
+}
+
+
+/* =========================
+   ERROR MESSAGE
+========================= */
+
+.error-message {
+  height: 22px;
+
+  font-size: 12px;
+
+  color: #8b1736;
+
+  text-align: center;
+}
+
+
+/* =========================
+   KEYPAD
+========================= */
+
+.keypad {
+  width: min(230px, 100%);
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: clamp(7px, 1.5vw, 11px);
+
+  margin-top: 4px;
+}
+
+
+/* =========================
+   KEYS
+========================= */
+
+.key {
+  width: 100%;
+
+  aspect-ratio: 1.15;
+
+  max-height: 58px;
+
+  border: 1px solid rgba(255, 255, 255, 0.4);
+
+  border-radius: 17px;
+
+  background:
+    rgba(255, 255, 255, 0.22);
+
+  color: #ffffff;
+
+  font-size: clamp(17px, 2vw, 20px);
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  box-shadow:
+    0 5px 15px rgba(120, 20, 50, 0.12);
+
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.key:hover {
+  background:
+    rgba(255, 255, 255, 0.38);
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 20px rgba(120, 20, 50, 0.2);
+}
+
+.key:active {
+  transform: scale(0.92);
+
+  background:
+    rgba(255, 255, 255, 0.45);
+}
+
+.key:focus-visible {
+  outline: 2px solid #5a1836;
+
+  outline-offset: 3px;
+}
+
+.empty-key {
+  visibility: hidden;
+
+  cursor: default;
+}
+
+
+/* =========================
+   TABLETS / MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+  .romantic-card {
+    flex-direction: column;
+
+    width: min(430px, 94vw);
+
+    border-radius: 26px;
+  }
+
+  .photo-section,
+  .passcode-section {
+    width: 100%;
+  }
+
+  .photo-section {
+    padding: 10px;
+  }
+
+  .photo-frame {
+    height: clamp(180px, 35vh, 270px);
+  }
+
+  .card-divider {
+    width: 80%;
+
+    height: 1px;
+
+    margin: 5px auto;
+
+    background:
+      linear-gradient(
+        to right,
+        transparent,
+        rgba(255, 255, 255, 0.5),
+        transparent
+      );
+  }
+
+  .passcode-section {
+    padding: 15px 10px 20px;
+  }
+
+  .photo-caption {
+    padding-top: 12px;
+  }
+}
+
+
+/* =========================
+   SHORT PHONES
+========================= */
+
+@media (max-height: 700px) and (max-width: 700px) {
+
+  .romantic-card-wrapper {
+    align-items: flex-start;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .romantic-card {
+    padding: 9px;
+
+    border-radius: 22px;
+  }
+
+  .photo-frame {
+    height: 170px;
+
+    border-radius: 18px;
+  }
+
+  .photo-caption {
+    padding-top: 8px;
+  }
+
+  .photo-caption h2 {
+    font-size: 19px;
+  }
+
+  .photo-caption p {
+    margin-top: 3px;
+
+    font-size: 11px;
+
+    line-height: 1.35;
+  }
+
+  .passcode-heading span {
+    font-size: 8px;
+
+    letter-spacing: 2px;
+  }
+
+  .passcode-heading h1 {
+    margin-top: 4px;
+
+    font-size: 27px;
+  }
+
+  .passcode-heading p {
+    margin-top: 4px;
+
+    font-size: 11px;
+  }
+
+  .password-dots {
+    margin: 12px 0 5px;
+
+    gap: 10px;
+  }
+
+  .password-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .error-message {
+    height: 16px;
+
+    font-size: 10px;
+  }
+
+  .keypad {
+    width: 190px;
+
+    gap: 6px;
+  }
+
+  .key {
+    max-height: 46px;
+
+    border-radius: 13px;
+
+    font-size: 17px;
+  }
+}
+
+
+/* =========================
+   VERY SMALL PHONES
+========================= */
+
+@media (max-width: 380px) {
+
+  .romantic-card-wrapper {
+    padding: 8px;
+  }
+
+  .romantic-card {
+    width: 96vw;
+  }
+
+  .photo-frame {
+    height: 150px;
+  }
+
+  .keypad {
+    width: 175px;
+  }
+
+  .key {
+    max-height: 42px;
+  }
+}

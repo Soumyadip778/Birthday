@@ -1,0 +1,621 @@
+/* ================================
+   MEMORIES PAGE
+================================ */
+
+.memories-page {
+  position: relative;
+  z-index: 10;
+
+  min-height: 100dvh;
+  width: 100%;
+
+  padding: clamp(35px, 6vw, 80px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  box-sizing: border-box;
+
+  color: #641d39;
+}
+
+
+/* ================================
+   MAIN LAYOUT
+================================ */
+
+.memories-shell {
+  width: min(1250px, 94vw);
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(260px, 0.75fr)
+    minmax(500px, 1.5fr);
+
+  gap: clamp(35px, 6vw, 90px);
+
+  align-items: center;
+}
+
+
+/* ================================
+   INTRO
+================================ */
+
+.memories-intro {
+  padding: 20px 0;
+}
+
+.memories-label {
+  display: inline-block;
+
+  margin-bottom: 18px;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 3px;
+
+  color: #9a536d;
+}
+
+
+.memories-intro h1 {
+  margin: 0;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: clamp(42px, 5vw, 70px);
+
+  line-height: 0.95;
+
+  font-weight: 600;
+
+  letter-spacing: -2px;
+
+  color: #641d39;
+
+  text-shadow:
+    0 4px 20px
+    rgba(100, 29, 57, 0.12);
+}
+
+
+.memories-intro h1 em {
+  color: #a34b6b;
+
+  font-weight: 400;
+
+  font-style: italic;
+}
+
+
+.memories-description {
+  margin: 28px 0 0;
+
+  color: #7d4a5d;
+
+  font-family: Georgia, serif;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+}
+
+
+.birthday-note {
+  margin-top: 28px;
+
+  font-family: "Brush Script MT", cursive;
+
+  font-size: 19px;
+
+  color: #7b3b55;
+}
+
+
+.name-note {
+  margin-top: 5px;
+
+  font-family: Georgia, serif;
+
+  font-size: 20px;
+
+  font-style: italic;
+
+  letter-spacing: 2px;
+
+  color: #8d3e5c;
+}
+
+
+/* ================================
+   REVEAL BUTTON
+================================ */
+
+.reveal-button {
+  margin-top: 30px;
+
+  min-height: 66px;
+
+  padding: 0 20px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 9px;
+
+  border: 1px solid
+    rgba(255, 255, 255, 0.65);
+
+  border-radius: 50px;
+
+  background:
+    rgba(255, 255, 255, 0.3);
+
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  color: #641d39;
+
+  font-size: 22px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 10px 25px
+    rgba(100, 29, 57, 0.15);
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.reveal-button:hover:not(:disabled) {
+  transform: translateY(-3px);
+
+  background:
+    rgba(255, 255, 255, 0.5);
+
+  box-shadow:
+    0 15px 30px
+    rgba(100, 29, 57, 0.2);
+}
+
+
+.reveal-button:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+
+.reveal-button:disabled {
+  cursor: default;
+
+  opacity: 0.7;
+}
+
+
+.camera-icon {
+  font-size: 18px;
+}
+
+
+.memory-status {
+  margin-top: 12px;
+
+  color: #9a6577;
+
+  font-size: 10px;
+
+  letter-spacing: 2px;
+}
+
+
+/* ================================
+   GALLERY
+================================ */
+
+.memories-gallery {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: clamp(14px, 2vw, 25px);
+
+  align-items: start;
+}
+
+
+/* ================================
+   MEMORY CARD
+================================ */
+
+.memory-card {
+  position: relative;
+
+  padding: 9px 9px 14px;
+
+  background:
+    rgba(255, 252, 248, 0.92);
+
+  border: 1px solid
+    rgba(255, 255, 255, 0.7);
+
+  border-radius: 4px;
+
+  box-shadow:
+    0 12px 30px
+    rgba(92, 29, 51, 0.16);
+
+  transform:
+    rotate(var(--rotation));
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    opacity 0.35s ease;
+}
+
+
+.memory-card:hover {
+  transform:
+    rotate(0deg)
+    translateY(-7px);
+
+  box-shadow:
+    0 20px 40px
+    rgba(92, 29, 51, 0.22);
+}
+
+
+/* ================================
+   HIDDEN CARD
+================================ */
+
+.memory-hidden {
+  opacity: 0.78;
+}
+
+
+.memory-placeholder {
+  width: 100%;
+
+  aspect-ratio: 1 / 1;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 244, 247, 0.95),
+      rgba(250, 222, 230, 0.9)
+    );
+
+  border: 1px solid
+    rgba(180, 91, 119, 0.12);
+}
+
+
+.memory-placeholder span {
+  font-family: Georgia, serif;
+
+  font-size: 24px;
+
+  color: #b36a83;
+
+  opacity: 0.65;
+}
+
+
+/* ================================
+   PHOTO
+================================ */
+
+.memory-image-wrapper {
+  width: 100%;
+
+  aspect-ratio: 1 / 1;
+
+  overflow: hidden;
+
+  background: #f7d9e1;
+}
+
+
+.memory-image {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.5s ease;
+}
+
+
+.memory-card:hover .memory-image {
+  transform: scale(1.04);
+}
+
+
+/* ================================
+   CAPTION
+================================ */
+
+.memory-card-caption {
+  padding:
+    11px 4px 2px;
+
+  min-height: 25px;
+
+  color: #713049;
+
+  font-family: Georgia, serif;
+
+  font-size: 11px;
+
+  line-height: 1.35;
+
+  text-align: center;
+}
+
+
+/* ================================
+   REVEAL ANIMATION
+================================ */
+
+.memory-visible {
+  animation:
+    revealMemory
+    0.65s cubic-bezier(
+      0.2,
+      0.8,
+      0.2,
+      1
+    );
+}
+
+
+@keyframes revealMemory {
+
+  0% {
+    opacity: 0;
+
+    transform:
+      translateY(25px)
+      rotate(0deg)
+      scale(0.88);
+  }
+
+  70% {
+    transform:
+      translateY(-4px)
+      rotate(var(--rotation))
+      scale(1.02);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      rotate(var(--rotation))
+      scale(1);
+  }
+}
+
+
+/* ================================
+   CONTINUE
+================================ */
+
+.memories-continue {
+  margin-top: 45px;
+
+  padding:
+    13px 24px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.65);
+
+  border-radius: 50px;
+
+  background:
+    rgba(255, 255, 255, 0.32);
+
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  color: #641d39;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 12px 30px
+    rgba(100, 29, 57, 0.16);
+
+  animation:
+    continueAppear
+    0.6s ease both;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+
+.memories-continue span {
+  font-size: 18px;
+}
+
+
+.memories-continue:hover {
+  transform: translateY(-3px);
+
+  background:
+    rgba(255, 255, 255, 0.52);
+}
+
+
+@keyframes continueAppear {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+}
+
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 950px) {
+
+  .memories-shell {
+    grid-template-columns: 1fr;
+
+    gap: 35px;
+  }
+
+
+  .memories-intro {
+    text-align: center;
+  }
+
+
+  .memories-intro h1 {
+    font-size:
+      clamp(40px, 8vw, 60px);
+  }
+
+
+  .memories-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+  .memories-gallery {
+    width: min(750px, 100%);
+
+    margin: 0 auto;
+  }
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 600px) {
+
+  .memories-page {
+    padding:
+      35px 15px 50px;
+  }
+
+
+  .memories-shell {
+    width: 94vw;
+
+    gap: 30px;
+  }
+
+
+  .memories-intro h1 {
+    font-size: 43px;
+
+    letter-spacing: -1px;
+  }
+
+
+  .memories-description {
+    font-size: 13px;
+  }
+
+
+  .memories-gallery {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 13px;
+  }
+
+
+  .memory-card {
+    padding: 7px 7px 10px;
+  }
+
+
+  .memory-card-caption {
+    font-size: 9px;
+
+    padding-top: 8px;
+  }
+
+
+  .reveal-button {
+    margin-top: 22px;
+  }
+
+
+  .memories-continue {
+    margin-top: 30px;
+  }
+}
+
+
+/* ================================
+   VERY SMALL PHONES
+================================ */
+
+@media (max-width: 360px) {
+
+  .memories-gallery {
+    grid-template-columns: 1fr;
+  }
+
+
+  .memory-card {
+    width: min(260px, 85vw);
+
+    margin: 0 auto;
+  }
+}

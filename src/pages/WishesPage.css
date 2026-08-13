@@ -1,0 +1,589 @@
+/* =========================================
+   WISHES PAGE
+========================================= */
+
+.wishes-page {
+  position: relative;
+  z-index: 10;
+
+  min-height: 100dvh;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+
+  padding: 55px 20px;
+
+  box-sizing: border-box;
+
+  color: #641d39;
+}
+
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.wishes-container {
+  width: min(900px, 94vw);
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+
+/* =========================================
+   HEADING
+========================================= */
+
+.wishes-label {
+  margin-bottom: 10px;
+
+  color: rgba(100, 29, 57, 0.65);
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 4px;
+
+  text-align: center;
+}
+
+
+.wishes-container h1 {
+  margin: 0;
+
+  color: #641d39;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(40px, 6vw, 60px);
+
+  line-height: 1;
+
+  font-weight: 600;
+
+  text-align: center;
+}
+
+
+.wishes-subtitle {
+  margin:
+    15px 0 38px;
+
+  color:
+    rgba(100, 29, 57, 0.7);
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 15px;
+
+  line-height: 1.5;
+
+  text-align: center;
+}
+
+
+/* =========================================
+   WISH GRID
+   3 COLUMNS ON PC
+========================================= */
+
+.wishes-grid {
+  width: min(780px, 92vw);
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 22px 25px;
+
+  align-items: center;
+}
+
+
+/* =========================================
+   WISH CARD
+========================================= */
+
+.wish-card {
+  position: relative;
+
+  width: 100%;
+
+  min-height: 145px;
+
+  padding: 18px;
+
+  box-sizing: border-box;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.65);
+
+  border-radius: 22px;
+
+  background:
+    rgba(255, 250, 250, 0.35);
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  color: #641d39;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 12px 28px
+      rgba(100, 29, 57, 0.14),
+
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.7);
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+/* =========================================
+   STAGGER
+   Creates:
+
+   [ 1 ]   [ 2 ]   [ 3 ]
+           [ 4 ]
+   [ 5 ]          [ 6 ]
+
+   Middle column sits slightly lower.
+========================================= */
+
+.wish-card:nth-child(2),
+.wish-card:nth-child(4),
+.wish-card:nth-child(6) {
+  transform: translateY(22px);
+}
+
+
+/* =========================================
+   HOVER
+========================================= */
+
+.wish-card:hover {
+  transform:
+    translateY(-5px)
+    scale(1.025);
+
+  background:
+    rgba(255, 255, 255, 0.48);
+
+  box-shadow:
+    0 20px 38px
+      rgba(100, 29, 57, 0.2);
+}
+
+
+/* Keep staggered cards lower on hover */
+
+.wish-card:nth-child(2):hover,
+.wish-card:nth-child(4):hover,
+.wish-card:nth-child(6):hover {
+  transform:
+    translateY(16px)
+    scale(1.025);
+}
+
+
+.wish-card:active {
+  transform:
+    scale(0.97);
+}
+
+
+/* =========================================
+   FRONT
+========================================= */
+
+.wish-front {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+.wish-number {
+  position: absolute;
+
+  top: 12px;
+  left: 15px;
+
+  color:
+    rgba(100, 29, 57, 0.32);
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-size: 12px;
+}
+
+
+.wish-heart {
+  margin-bottom: 5px;
+
+  color: #b34869;
+
+  font-size: 29px;
+
+  line-height: 1;
+}
+
+
+.wish-front h2 {
+  margin:
+    7px 0 3px;
+
+  color: #641d39;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 18px;
+
+  font-weight: 600;
+}
+
+
+.wish-front p {
+  margin: 5px 0 0;
+
+  color:
+    rgba(100, 29, 57, 0.55);
+
+  font-size: 11px;
+}
+
+
+/* =========================================
+   REVEALED CARD
+========================================= */
+
+.wish-card.revealed {
+  background:
+    rgba(255, 238, 244, 0.55);
+}
+
+
+.wish-back {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+.wish-back .wish-heart {
+  margin-bottom: 12px;
+
+  font-size: 24px;
+}
+
+
+.wish-back p {
+  max-width: 210px;
+
+  margin: 0;
+
+  color: #641d39;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+
+  text-align: center;
+}
+
+
+/* =========================================
+   CONTINUE BUTTON
+========================================= */
+
+.wishes-continue {
+  margin-top: 55px;
+
+  min-height: 50px;
+
+  padding:
+    0 27px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 13px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.65);
+
+  border-radius: 50px;
+
+  background:
+    rgba(255, 255, 255, 0.3);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  color: #641d39;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 10px 25px
+      rgba(100, 29, 57, 0.14);
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+
+.wishes-continue:hover {
+  transform:
+    translateY(-3px);
+
+  background:
+    rgba(255, 255, 255, 0.5);
+}
+
+
+.wishes-continue span {
+  font-size: 19px;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 750px) {
+
+  .wishes-page {
+    padding:
+      45px 15px;
+  }
+
+
+  .wishes-container {
+    width: min(600px, 94vw);
+  }
+
+
+  .wishes-grid {
+    width: min(500px, 90vw);
+
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    gap: 18px 20px;
+  }
+
+
+  .wish-card {
+    min-height: 145px;
+  }
+
+
+  /* Remove 3-column stagger */
+  .wish-card:nth-child(2),
+  .wish-card:nth-child(4),
+  .wish-card:nth-child(6) {
+    transform: none;
+  }
+
+
+  .wish-card:hover,
+  .wish-card:nth-child(2):hover,
+  .wish-card:nth-child(4):hover,
+  .wish-card:nth-child(6):hover {
+    transform:
+      translateY(-4px)
+      scale(1.02);
+  }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .wishes-page {
+    padding:
+      38px 15px;
+  }
+
+
+  .wishes-container {
+    width: 100%;
+  }
+
+
+  .wishes-label {
+    font-size: 9px;
+
+    letter-spacing: 3px;
+  }
+
+
+  .wishes-container h1 {
+    font-size: 38px;
+  }
+
+
+  .wishes-subtitle {
+    margin:
+      14px 0 28px;
+
+    font-size: 13px;
+  }
+
+
+  /* ONE CARD PER ROW */
+
+  .wishes-grid {
+    width: min(330px, 90vw);
+
+    grid-template-columns: 1fr;
+
+    gap: 15px;
+  }
+
+
+  .wish-card {
+    min-height: 145px;
+
+    border-radius: 20px;
+  }
+
+
+  /* NO STAGGER ON MOBILE */
+
+  .wish-card:nth-child(2),
+  .wish-card:nth-child(4),
+  .wish-card:nth-child(6) {
+    transform: none;
+  }
+
+
+  .wish-card:hover,
+  .wish-card:nth-child(2):hover,
+  .wish-card:nth-child(4):hover,
+  .wish-card:nth-child(6):hover {
+    transform:
+      translateY(-4px)
+      scale(1.02);
+  }
+
+
+  .wish-heart {
+    font-size: 27px;
+  }
+
+
+  .wish-front h2 {
+    font-size: 18px;
+  }
+
+
+  .wish-front p {
+    font-size: 11px;
+  }
+
+
+  .wish-back p {
+    max-width: 275px;
+
+    font-size: 14px;
+
+    line-height: 1.55;
+  }
+
+
+  .wishes-continue {
+    margin-top: 35px;
+
+    font-size: 13px;
+  }
+}
+
+
+/* =========================================
+   VERY SMALL PHONES
+========================================= */
+
+@media (max-width: 360px) {
+
+  .wishes-container h1 {
+    font-size: 34px;
+  }
+
+
+  .wishes-grid {
+    width: 92vw;
+
+    gap: 12px;
+  }
+
+
+  .wish-card {
+    min-height: 135px;
+
+    padding: 15px;
+  }
+
+
+  .wish-back p {
+    font-size: 13px;
+  }
+}
