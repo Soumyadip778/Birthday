@@ -62,10 +62,10 @@ function RomanticCard() {
           </div>
 
           <div className="photo-caption">
-            <h2>Our Special Moment</h2>
+            <h2>The Birthday Girl</h2>
 
             <p>
-              Some moments are meant to be remembered forever.
+              The most beautiful soul , Priyani
             </p>
           </div>
 
