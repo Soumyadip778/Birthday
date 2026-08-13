@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import CODE from "/data.js";
 import "./RomanticCard.css";
 
 function RomanticCard() {
   const navigate = useNavigate();
   const [entered, setEntered] = useState("");
   const [error, setError] = useState("");
-
-  const CODE = "160807";
 
   const keys = [
     "1", "2", "3",
