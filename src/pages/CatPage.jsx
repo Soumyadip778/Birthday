@@ -18,7 +18,7 @@ function CatPage() {
           <div className="cat-glow"></div>
 
           <img
-            src="/cat.png"
+            src="/cat.webp"
             alt="Cute cat holding roses"
             className="cat-image"
           />

@@ -56,7 +56,7 @@ function RomanticCard() {
 
           <div className="photo-frame">
             <img
-              src="/Home_Screen.jpeg"
+              src="/Home_Screen.webp"
               alt="A special memory"
             />
           </div>

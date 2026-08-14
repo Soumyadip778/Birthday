@@ -174,7 +174,7 @@ function CakePage() {
 
           {!cut && (
             <img
-              src="/cake.png"
+              src="/cake.webp"
               alt="Birthday cake"
               className="whole-cake"
               draggable="false"
@@ -189,7 +189,7 @@ function CakePage() {
 
               <div className="cake-half cake-half-left">
                 <img
-                  src="/cake.png"
+                  src="/cake.webp"
                   alt=""
                   draggable="false"
                 />
@@ -197,7 +197,7 @@ function CakePage() {
 
               <div className="cake-half cake-half-right">
                 <img
-                  src="/cake.png"
+                  src="/cake.webp"
                   alt=""
                   draggable="false"
                 />
