@@ -7,27 +7,27 @@ function MemoriesPage() {
 
   const memories = [
     {
-      src: "/memory1.jpg",
+      src: "/memory1.jpeg",
       caption: "The beginning ❤️",
     },
     {
-      src: "/memory2.jpg",
+      src: "/memory2.jpeg",
       caption: "A moment worth keeping",
     },
     {
-      src: "/memory3.jpg",
+      src: "/memory3.jpeg",
       caption: "One of my favourites ✨",
     },
     {
-      src: "/memory4.jpg",
+      src: "/memory4.jpeg",
       caption: "Forever special 💕",
     },
     {
-      src: "/memory5.jpg",
+      src: "/memory5.jpeg",
       caption: "A little piece of happiness",
     },
     {
-      src: "/memory6.jpg",
+      src: "/memory6.jpeg",
       caption: "And many more to come ♡",
     },
   ];
