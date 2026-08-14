@@ -7,7 +7,7 @@ function RomanticCard() {
   const [entered, setEntered] = useState("");
   const [error, setError] = useState("");
 
-  const CODE = "300607";
+  const CODE = "160807";
   const keys = [
     "1", "2", "3",
     "4", "5", "6",
