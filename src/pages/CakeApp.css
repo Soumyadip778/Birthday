@@ -1,3 +1,7 @@
+/* =========================
+   CAKE PAGE
+========================= */
+
 .cake-page {
   position: relative;
   z-index: 10;
@@ -24,7 +28,6 @@
 
   display: flex;
   flex-direction: column;
-
   align-items: center;
 
   text-align: center;
@@ -235,22 +238,50 @@
 
   transform: translateX(-50%);
 
-  pointer-events: none;
+  /*
+    IMPORTANT:
+    The candle container must
+    receive pointer events.
+  */
+  pointer-events: auto;
 }
+
+
+/* =========================
+   INDIVIDUAL CANDLE
+========================= */
 
 .candle {
   position: absolute;
 
   top: 0;
 
-  width: 25px;
-  height: 75px;
+  /*
+    Larger than the visible candle
+    so tapping is easier on phones.
+  */
+  width: 45px;
+  height: 90px;
 
   display: flex;
   flex-direction: column;
-
   align-items: center;
+
+  cursor: pointer;
+
+  padding: 10px;
+
+  margin: -10px;
+
+  box-sizing: content-box;
+
+  touch-action: manipulation;
+
+  -webkit-tap-highlight-color: transparent;
 }
+
+
+/* Candle positions */
 
 .candle-left {
   left: 25px;
@@ -285,6 +316,12 @@
   box-shadow:
     2px 3px 7px
     rgba(80, 20, 50, 0.2);
+
+  /*
+    Let .candle receive
+    the click instead.
+  */
+  pointer-events: none;
 }
 
 
@@ -321,7 +358,10 @@
 
   cursor: pointer;
 
-  pointer-events: auto;
+  /*
+    Click goes to .candle.
+  */
+  pointer-events: none;
 
   animation:
     flameFlicker
@@ -343,7 +383,10 @@
   border-radius: 50%;
 
   background: #fffde7;
+
+  pointer-events: none;
 }
+
 
 @keyframes flameFlicker {
   from {
@@ -357,6 +400,15 @@
       scale(1.12)
       rotate(3deg);
   }
+}
+
+
+/* =========================
+   CANDLE PRESS EFFECT
+========================= */
+
+.candle:active {
+  transform: scale(0.94);
 }
 
 
@@ -383,11 +435,14 @@
     -5px -22px 0
       rgba(100, 80, 100, 0.14);
 
+  pointer-events: none;
+
   animation:
     smokeRise
     1.2s
     ease-out forwards;
 }
+
 
 @keyframes smokeRise {
   from {
@@ -443,6 +498,7 @@
     translateY(120px)
     rotate(90deg);
 }
+
 
 @keyframes knifeIdle {
   from {
@@ -522,6 +578,7 @@
 .sprinkles span:nth-child(4n) {
   background: #e8789c;
 }
+
 
 @keyframes sprinkleFall {
   0% {
@@ -603,6 +660,7 @@
 
   font-style: italic;
 }
+
 
 @keyframes afterCutAppear {
   from {
@@ -707,6 +765,33 @@
 
   .candles {
     top: 20px;
+
+    width: 230px;
+  }
+
+  .candle-left {
+    left: 20px;
+  }
+
+  .candle-middle {
+    left: 102px;
+  }
+
+  .candle-right {
+    right: 20px;
+  }
+
+  /*
+    Bigger touch targets
+    on mobile.
+  */
+  .candle {
+    width: 50px;
+    height: 95px;
+
+    padding: 12px;
+
+    margin: -12px;
   }
 
   .knife {
@@ -723,5 +808,35 @@
 
   .after-cut p {
     font-size: 13px;
+  }
+
+  .continue-button {
+    padding:
+      12px 26px;
+
+    font-size: 14px;
+  }
+}
+
+
+/* =========================
+   VERY SMALL PHONES
+========================= */
+
+@media (max-width: 360px) {
+
+  .cake-stage {
+    width: 100vw;
+  }
+
+  .candles {
+    transform:
+      translateX(-50%)
+      scale(0.9);
+  }
+
+  .candle {
+    width: 48px;
+    height: 92px;
   }
 }

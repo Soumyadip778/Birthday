@@ -1,66 +1,208 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./MusicPage.css";
+
+const songs = [
+  {
+    title: "Kahe Mose",
+    artist: "A song for this moment",
+    file: "/public/kahe-mose.mp3",
+    cover: "/public/music1.webp",
+    lyrics: [
+      "Tu hi jo dekhe",
+      "Dil kyon mera",
+      "Bhar jaae re sajna"
+    ]
+  },
+  {
+    title: "Sun Saawariya",
+    artist: "Another little memory",
+    file: "/public/sun-sawariya.mp3",
+    cover: "/public/music2.webp",
+    lyrics: [
+      "Sun saawariya, kahaan tu?",
+      "Teri reet main samajh na paaun",
+      "Ghoom-ghoom-ghoomta hi rahoon"
+    ]
+  },
+  {
+    title: "Tere Paas Main",
+    artist: "For another moment",
+    file: "/public/tere-pass-main.mp3",
+    cover: "/public/music3.jpg",
+    lyrics: [
+      "Jaise Tu Hain Pass Mere",
+      "Jaise Shaamon ke Sawere",
+      "Tere Paas Main"
+    ]
+  }
+];
 
 function MusicPage() {
   const navigate = useNavigate();
   const audioRef = useRef(null);
 
+  const [currentSong, setCurrentSong] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [duration, setDuration] = useState(0);
 
-  const togglePlay = () => {
+  const song = songs[currentSong];
+
+  /* =========================
+     PLAY / PAUSE
+  ========================= */
+
+  const togglePlay = async () => {
     if (!audioRef.current) return;
 
     if (playing) {
       audioRef.current.pause();
-    } else {
-      audioRef.current.play();
+      setPlaying(false);
+      return;
     }
 
-    setPlaying(!playing);
+    try {
+      await audioRef.current.play();
+      setPlaying(true);
+    } catch (error) {
+      console.error("Audio playback failed:", error);
+    }
   };
+
+  /* =========================
+     CHANGE SONG
+  ========================= */
+
+  const changeSong = (index) => {
+    if (index < 0 || index >= songs.length) return;
+
+    setPlaying(false);
+    setProgress(0);
+    setDuration(0);
+    setCurrentSong(index);
+  };
+
+  const previousSong = () => {
+    const newIndex =
+      currentSong === 0
+        ? songs.length - 1
+        : currentSong - 1;
+
+    changeSong(newIndex);
+  };
+
+  const nextSong = () => {
+    const newIndex =
+      currentSong === songs.length - 1
+        ? 0
+        : currentSong + 1;
+
+    changeSong(newIndex);
+  };
+
+  /* =========================
+     LOAD NEW SONG
+  ========================= */
+
+  useEffect(() => {
+    if (!audioRef.current) return;
+
+    audioRef.current.load();
+    setProgress(0);
+
+    if (playing) {
+      audioRef.current
+        .play()
+        .catch(() => setPlaying(false));
+    }
+  }, [currentSong]);
+
+  /* =========================
+     AUDIO PROGRESS
+  ========================= */
 
   const updateProgress = () => {
     if (!audioRef.current) return;
 
-    const value =
-      (audioRef.current.currentTime /
-        audioRef.current.duration) *
-      100;
+    const current = audioRef.current.currentTime;
+    const total = audioRef.current.duration;
 
-    setProgress(value || 0);
+    if (!total || !Number.isFinite(total)) return;
+
+    setProgress((current / total) * 100);
+  };
+
+  const handleLoadedMetadata = () => {
+    if (!audioRef.current) return;
+
+    setDuration(audioRef.current.duration || 0);
   };
 
   const changeProgress = (e) => {
-    if (!audioRef.current) return;
+    if (!audioRef.current || !duration) return;
 
     const value = Number(e.target.value);
 
     audioRef.current.currentTime =
-      (value / 100) * audioRef.current.duration;
+      (value / 100) * duration;
 
     setProgress(value);
   };
 
-  const handleEnded = () => {
+  /* =========================
+     WHEN SONG ENDS
+  ========================= */
+
+ const handleEnded = () => {
+  if (currentSong === songs.length - 1) {
     setPlaying(false);
-    setProgress(0);
+    setProgress(100);
+    return;
+  }
+
+  setProgress(0);
+  setCurrentSong(currentSong + 1);
+  setPlaying(true);
+};
+
+  /* =========================
+     FORMAT TIME
+  ========================= */
+
+  const formatTime = (seconds) => {
+    if (!Number.isFinite(seconds)) return "0:00";
+
+    const minutes = Math.floor(seconds / 60);
+    const remaining = Math.floor(seconds % 60);
+
+    return `${minutes}:${remaining
+      .toString()
+      .padStart(2, "0")}`;
   };
 
   return (
     <main className="music-page">
 
+      {/* =========================
+          AUDIO
+      ========================= */}
+
       <audio
         ref={audioRef}
-        src="/song.mp3"
+        src={song.file}
         onTimeUpdate={updateProgress}
+        onLoadedMetadata={handleLoadedMetadata}
         onEnded={handleEnded}
+        preload="metadata"
       />
+
 
       <div className="music-card">
 
-        {/* LEFT SIDE */}
+        {/* =========================
+            LEFT SIDE
+        ========================= */}
 
         <section className="music-text">
 
@@ -93,9 +235,29 @@ function MusicPage() {
         </section>
 
 
-        {/* RIGHT SIDE */}
+        {/* =========================
+            PLAYER
+        ========================= */}
 
         <section className="music-player">
+
+          {/* FLOATING LYRICS */}
+
+          <div className="floating-lyrics">
+
+            {song.lyrics.map((line, index) => (
+              <span
+                key={`${currentSong}-${index}`}
+                className={`floating-lyric lyric-${index + 1}`}
+              >
+                {line}
+              </span>
+            ))}
+
+          </div>
+
+
+          {/* ALBUM */}
 
           <div className="album-wrapper">
 
@@ -110,12 +272,12 @@ function MusicPage() {
             <div className="album-art">
 
               <img
-                src="/music-photo.jpg"
-                alt="Music cover"
+                src={song.cover}
+                alt={`${song.title} cover`}
               />
 
               <div className="album-overlay">
-                ♫
+                {playing ? "♫" : "♪"}
               </div>
 
             </div>
@@ -123,18 +285,22 @@ function MusicPage() {
           </div>
 
 
+          {/* SONG INFO */}
+
           <div className="song-info">
 
             <h2>
-              A song for this moment
+              {song.title}
             </h2>
 
             <p>
-              Just close your eyes and listen...
+              {song.artist}
             </p>
 
           </div>
 
+
+          {/* PROGRESS */}
 
           <div className="progress-container">
 
@@ -146,21 +312,37 @@ function MusicPage() {
               onChange={changeProgress}
               className="music-progress"
               style={{
-                "--progress": `${progress}%`,
+                "--progress": `${progress}%`
               }}
             />
 
+            <div className="time-row">
+              <span>
+                {formatTime(
+                  (progress / 100) * duration
+                )}
+              </span>
+
+              <span>
+                {formatTime(duration)}
+              </span>
+            </div>
+
           </div>
 
+
+          {/* CONTROLS */}
 
           <div className="music-controls">
 
             <button
               className="control-button"
-              aria-label="Previous"
+              onClick={previousSong}
+              aria-label="Previous song"
             >
               ⏮
             </button>
+
 
             <button
               className="play-button"
@@ -172,12 +354,25 @@ function MusicPage() {
               {playing ? "Ⅱ" : "▶"}
             </button>
 
+
             <button
               className="control-button"
-              aria-label="Next"
+              onClick={nextSong}
+              aria-label="Next song"
             >
               ⏭
             </button>
+
+          </div>
+
+
+          {/* SONG INDICATOR */}
+
+          <div className="song-indicator">
+
+            {currentSong + 1}
+            {" / "}
+            {songs.length}
 
           </div>
 
@@ -186,7 +381,9 @@ function MusicPage() {
       </div>
 
 
-      {/* CONTINUE */}
+      {/* =========================
+          CONTINUE
+      ========================= */}
 
       <button
         className="music-continue"

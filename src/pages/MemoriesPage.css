@@ -150,7 +150,8 @@
 
   gap: 9px;
 
-  border: 1px solid
+  border:
+    1px solid
     rgba(255, 255, 255, 0.65);
 
   border-radius: 50px;
@@ -159,6 +160,7 @@
     rgba(255, 255, 255, 0.3);
 
   backdrop-filter: blur(15px);
+
   -webkit-backdrop-filter: blur(15px);
 
   color: #641d39;
@@ -227,6 +229,7 @@
 .memories-gallery {
   display: grid;
 
+  /* 3 cards per row on PC */
   grid-template-columns:
     repeat(3, minmax(0, 1fr));
 
@@ -248,7 +251,8 @@
   background:
     rgba(255, 252, 248, 0.92);
 
-  border: 1px solid
+  border:
+    1px solid
     rgba(255, 255, 255, 0.7);
 
   border-radius: 4px;
@@ -305,7 +309,8 @@
       rgba(250, 222, 230, 0.9)
     );
 
-  border: 1px solid
+  border:
+    1px solid
     rgba(180, 91, 119, 0.12);
 }
 
@@ -383,7 +388,8 @@
 .memory-visible {
   animation:
     revealMemory
-    0.65s cubic-bezier(
+    0.65s
+    cubic-bezier(
       0.2,
       0.8,
       0.2,
@@ -447,6 +453,7 @@
     rgba(255, 255, 255, 0.32);
 
   backdrop-filter: blur(15px);
+
   -webkit-backdrop-filter: blur(15px);
 
   color: #641d39;
@@ -528,14 +535,20 @@
 
   .memories-description {
     margin-left: auto;
+
     margin-right: auto;
   }
 
 
   .memories-gallery {
-    width: min(750px, 100%);
+    width:
+      min(750px, 100%);
 
     margin: 0 auto;
+
+    /* Keep 3 columns on tablets */
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -548,7 +561,7 @@
 
   .memories-page {
     padding:
-      35px 15px 50px;
+      35px 12px 50px;
   }
 
 
@@ -571,16 +584,25 @@
   }
 
 
+  /* EXACTLY 2 CARDS PER ROW */
+
   .memories-gallery {
+    width: 100%;
+
     grid-template-columns:
       repeat(2, minmax(0, 1fr));
 
-    gap: 13px;
+    column-gap: 13px;
+
+    row-gap: 20px;
   }
 
 
   .memory-card {
-    padding: 7px 7px 10px;
+    width: 100%;
+
+    padding:
+      7px 7px 10px;
   }
 
 
@@ -608,14 +630,34 @@
 
 @media (max-width: 360px) {
 
+  /*
+     Still keep TWO cards per row
+     even on very small phones.
+  */
+
   .memories-gallery {
-    grid-template-columns: 1fr;
+    width: 100%;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    column-gap: 8px;
+
+    row-gap: 16px;
   }
 
 
   .memory-card {
-    width: min(260px, 85vw);
+    width: 100%;
 
-    margin: 0 auto;
+    padding:
+      6px 6px 9px;
+  }
+
+
+  .memory-card-caption {
+    font-size: 8px;
+
+    padding-top: 7px;
   }
 }

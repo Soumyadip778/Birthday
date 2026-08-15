@@ -4,21 +4,35 @@ import "./CakeApp.css";
 
 const CANDLES = ["left", "middle", "right"];
 
+
+/* =========================
+   CANDLE
+========================= */
+
 function Candle({ position, blownOut, onBlow }) {
+  const handleBlow = (e) => {
+    // Prevent the candle tap from starting
+    // the cake swipe underneath it.
+    e.stopPropagation();
+
+    if (!blownOut) {
+      onBlow();
+    }
+  };
+
   return (
-    <div className={`candle candle-${position}`}>
+    <div
+      className={`candle candle-${position}`}
+      onPointerDown={handleBlow}
+      onClick={handleBlow}
+      role="button"
+      tabIndex={0}
+      aria-label={`Blow out ${position} candle`}
+    >
       {!blownOut ? (
-        <button
-          type="button"
-          className="flame"
-          onPointerDown={(e) => {
-            e.stopPropagation();
-            onBlow();
-          }}
-          aria-label="Blow out candle"
-        >
+        <div className="flame">
           <span className="flame-inner" />
-        </button>
+        </div>
       ) : (
         <div className="smoke">
           <span />
@@ -32,6 +46,11 @@ function Candle({ position, blownOut, onBlow }) {
   );
 }
 
+
+/* =========================
+   CAKE PAGE
+========================= */
+
 function CakePage() {
   const navigate = useNavigate();
 
@@ -42,8 +61,14 @@ function CakePage() {
   const [cut, setCut] = useState(false);
   const [showSprinkles, setShowSprinkles] = useState(false);
 
+
+  /* =========================
+     CANDLE STATUS
+  ========================= */
+
   const allCandlesBlown =
     blownCandles.length === CANDLES.length;
+
 
   /* =========================
      BLOW CANDLE
@@ -59,14 +84,18 @@ function CakePage() {
     });
   };
 
+
   /* =========================
-     START SWIPE
+     START CAKE SWIPE
   ========================= */
 
   const handlePointerDown = (e) => {
-    if (!allCandlesBlown || cut) return;
+    if (!allCandlesBlown || cut) {
+      return;
+    }
 
     startYRef.current = e.clientY;
+
     setDragging(true);
 
     try {
@@ -74,8 +103,10 @@ function CakePage() {
     } catch {}
   };
 
+
   /* =========================
-     SWIPE TOP → BOTTOM
+     CAKE SWIPE
+     TOP → BOTTOM
   ========================= */
 
   const handlePointerMove = (e) => {
@@ -92,8 +123,11 @@ function CakePage() {
 
     if (distance >= 100) {
       setCut(true);
+
       setDragging(false);
+
       setShowSprinkles(true);
+
       startYRef.current = null;
 
       try {
@@ -104,10 +138,17 @@ function CakePage() {
     }
   };
 
+
+  /* =========================
+     END SWIPE
+  ========================= */
+
   const handlePointerUp = () => {
     setDragging(false);
+
     startYRef.current = null;
   };
+
 
   /* =========================
      SPRINKLES
@@ -118,12 +159,15 @@ function CakePage() {
     (_, index) => index
   );
 
+
   return (
     <main className="cake-page">
 
       <div className="cake-content">
 
-        {/* HEADER */}
+        {/* =========================
+            HEADER
+        ========================= */}
 
         <p className="cake-eyebrow">
           A LITTLE BIRTHDAY MAGIC
@@ -136,7 +180,9 @@ function CakePage() {
         <div className="cake-divider" />
 
 
-        {/* SPRINKLES */}
+        {/* =========================
+            SPRINKLES
+        ========================= */}
 
         {showSprinkles && (
           <div className="sprinkles">
@@ -144,9 +190,12 @@ function CakePage() {
               <span
                 key={item}
                 style={{
-                  left: `${(item * 37) % 100}%`,
+                  left:
+                    `${(item * 37) % 100}%`,
+
                   animationDelay:
                     `${(item % 10) * 0.06}s`,
+
                   animationDuration:
                     `${1.5 + (item % 5) * 0.15}s`,
                 }}
@@ -156,7 +205,9 @@ function CakePage() {
         )}
 
 
-        {/* CAKE */}
+        {/* =========================
+            CAKE STAGE
+        ========================= */}
 
         <div
           className={`
@@ -170,7 +221,9 @@ function CakePage() {
           onPointerCancel={handlePointerUp}
         >
 
-          {/* WHOLE CAKE */}
+          {/* =========================
+              WHOLE CAKE
+          ========================= */}
 
           {!cut && (
             <img
@@ -182,7 +235,9 @@ function CakePage() {
           )}
 
 
-          {/* SPLIT CAKE */}
+          {/* =========================
+              SPLIT CAKE
+          ========================= */}
 
           {cut && (
             <div className="split-cake">
@@ -207,14 +262,18 @@ function CakePage() {
           )}
 
 
-          {/* CANDLES */}
+          {/* =========================
+              CANDLES
+          ========================= */}
 
           {!cut && (
             <div className="candles">
 
               <Candle
                 position="left"
-                blownOut={blownCandles.includes("left")}
+                blownOut={
+                  blownCandles.includes("left")
+                }
                 onBlow={() =>
                   blowCandle("left")
                 }
@@ -222,7 +281,9 @@ function CakePage() {
 
               <Candle
                 position="middle"
-                blownOut={blownCandles.includes("middle")}
+                blownOut={
+                  blownCandles.includes("middle")
+                }
                 onBlow={() =>
                   blowCandle("middle")
                 }
@@ -230,7 +291,9 @@ function CakePage() {
 
               <Candle
                 position="right"
-                blownOut={blownCandles.includes("right")}
+                blownOut={
+                  blownCandles.includes("right")
+                }
                 onBlow={() =>
                   blowCandle("right")
                 }
@@ -240,7 +303,9 @@ function CakePage() {
           )}
 
 
-          {/* KNIFE */}
+          {/* =========================
+              KNIFE
+          ========================= */}
 
           {allCandlesBlown && !cut && (
             <div
@@ -256,7 +321,9 @@ function CakePage() {
         </div>
 
 
-        {/* INSTRUCTION */}
+        {/* =========================
+            INSTRUCTION
+        ========================= */}
 
         {!allCandlesBlown && !cut && (
           <p className="cake-instruction">
@@ -271,7 +338,9 @@ function CakePage() {
         )}
 
 
-        {/* AFTER CUT */}
+        {/* =========================
+            AFTER CUT
+        ========================= */}
 
         {cut && (
           <section className="after-cut">
@@ -302,6 +371,7 @@ function CakePage() {
         )}
 
       </div>
+
     </main>
   );
 }

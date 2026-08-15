@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
+import ScrollToTop from "./components/ScrollToTop.jsx";
 import RomanticBackground from "./components/RomanticBackground.jsx";
 import PassCard from "./components/PassCard.jsx";
 import CatPage from "./pages/CatPage.jsx";
@@ -26,6 +27,8 @@ function ProtectedRoute({ children }) {
 function App() {
   return (
     <BrowserRouter>
+
+    <ScrollToTop />
 
       {/* Background stays behind every page */}
       <RomanticBackground />

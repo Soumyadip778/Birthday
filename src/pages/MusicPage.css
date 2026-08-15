@@ -684,3 +684,202 @@
     margin-top: 22px;
   }
 }
+
+/* ================================
+   FLOATING LYRICS
+================================ */
+
+.music-player {
+  position: relative;
+  overflow: visible;
+}
+
+
+/* Container */
+
+.floating-lyrics {
+  position: absolute;
+
+  inset: -45px -80px;
+
+  pointer-events: none;
+
+  z-index: 1;
+}
+
+
+/* Individual lyric */
+
+.floating-lyric {
+  position: absolute;
+
+  max-width: 180px;
+
+  padding: 8px 14px;
+
+  border-radius: 30px;
+
+  background:
+    rgba(255, 255, 255, 0.25);
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.5);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  color: #7b3852;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 12px;
+
+  font-style: italic;
+
+  line-height: 1.4;
+
+  box-shadow:
+    0 8px 20px
+    rgba(100, 29, 57, 0.08);
+
+  opacity: 0.8;
+
+  animation:
+    lyricFloat
+    5s
+    ease-in-out
+    infinite;
+}
+
+
+/* Positions */
+
+.lyric-1 {
+  top: 8%;
+  left: -35px;
+
+  animation-delay: 0s;
+}
+
+
+.lyric-2 {
+  top: 35%;
+  right: -60px;
+
+  animation-delay: 1.2s;
+}
+
+
+.lyric-3 {
+  bottom: 8%;
+  left: -45px;
+
+  animation-delay: 2.4s;
+}
+
+
+/* Floating animation */
+
+@keyframes lyricFloat {
+
+  0% {
+    opacity: 0.35;
+
+    transform:
+      translateY(8px)
+      rotate(-2deg);
+  }
+
+  50% {
+    opacity: 0.9;
+
+    transform:
+      translateY(-12px)
+      rotate(2deg);
+  }
+
+  100% {
+    opacity: 0.35;
+
+    transform:
+      translateY(8px)
+      rotate(-2deg);
+  }
+
+}
+
+
+/* ================================
+   TIME
+================================ */
+
+.time-row {
+  display: flex;
+
+  justify-content: space-between;
+
+  margin-top: 6px;
+
+  padding: 0 3px;
+
+  color:
+    rgba(100, 29, 57, 0.55);
+
+  font-size: 10px;
+}
+
+
+/* ================================
+   SONG INDICATOR
+================================ */
+
+.song-indicator {
+  margin-top: 12px;
+
+  color:
+    rgba(100, 29, 57, 0.5);
+
+  font-size: 10px;
+
+  letter-spacing: 2px;
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 600px) {
+
+  .floating-lyrics {
+    inset: -30px -10px;
+  }
+
+  .floating-lyric {
+    max-width: 135px;
+
+    padding: 6px 10px;
+
+    font-size: 10px;
+  }
+
+  .lyric-1 {
+    left: -5px;
+    top: 5%;
+  }
+
+  .lyric-2 {
+    right: -5px;
+    top: 40%;
+  }
+
+  .lyric-3 {
+    left: 0;
+    bottom: 5%;
+  }
+
+}
