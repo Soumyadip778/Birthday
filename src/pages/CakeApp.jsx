@@ -10,8 +10,7 @@ const CANDLES = ["left", "middle", "right"];
 
 function Candle({ position, blownOut, onBlow }) {
   const handleBlow = (e) => {
-    // Prevent the candle tap from starting
-    // the cake swipe underneath it.
+    // Prevent candle click from starting cake swipe
     e.stopPropagation();
 
     if (!blownOut) {
@@ -45,7 +44,6 @@ function Candle({ position, blownOut, onBlow }) {
   );
 }
 
-
 /* =========================
    CAKE PAGE
 ========================= */
@@ -56,11 +54,14 @@ function CakePage() {
   const startYRef = useRef(null);
   const lastYRef = useRef(null);
 
+  // Birthday music
+  const musicRef = useRef(null);
+  const [musicStarted, setMusicStarted] = useState(false);
+
   const [blownCandles, setBlownCandles] = useState([]);
   const [dragging, setDragging] = useState(false);
   const [cut, setCut] = useState(false);
   const [showSprinkles, setShowSprinkles] = useState(false);
-
 
   /* =========================
      CANDLE STATUS
@@ -69,12 +70,25 @@ function CakePage() {
   const allCandlesBlown =
     blownCandles.length === CANDLES.length;
 
-
   /* =========================
      BLOW CANDLE
   ========================= */
 
   const blowCandle = (position) => {
+    // Start birthday music on first candle click
+    if (!musicStarted && musicRef.current) {
+      musicRef.current.volume = 0.25;
+
+      musicRef.current
+        .play()
+        .then(() => {
+          setMusicStarted(true);
+        })
+        .catch((error) => {
+          console.log("Music playback failed:", error);
+        });
+    }
+
     setBlownCandles((previous) => {
       if (previous.includes(position)) {
         return previous;
@@ -83,7 +97,6 @@ function CakePage() {
       return [...previous, position];
     });
   };
-
 
   /* =========================
      START CAKE SWIPE
@@ -103,7 +116,6 @@ function CakePage() {
       e.currentTarget.setPointerCapture(e.pointerId);
     } catch {}
   };
-
 
   /* =========================
      SMOOTH CAKE SWIPE
@@ -126,11 +138,7 @@ function CakePage() {
 
     lastYRef.current = currentY;
 
-    /*
-      One continuous downward swipe.
-      The cake cuts after a short,
-      natural downward movement.
-    */
+    // One continuous downward swipe
     if (distance >= 70) {
       setCut(true);
       setDragging(false);
@@ -140,13 +148,18 @@ function CakePage() {
       lastYRef.current = null;
 
       try {
-        e.currentTarget.releasePointerCapture(
-          e.pointerId
-        );
+        if (
+          e.currentTarget.hasPointerCapture(
+            e.pointerId
+          )
+        ) {
+          e.currentTarget.releasePointerCapture(
+            e.pointerId
+          );
+        }
       } catch {}
     }
   };
-
 
   /* =========================
      END SWIPE
@@ -171,7 +184,6 @@ function CakePage() {
     } catch {}
   };
 
-
   /* =========================
      SPRINKLES
   ========================= */
@@ -181,9 +193,19 @@ function CakePage() {
     (_, index) => index
   );
 
-
   return (
     <main className="cake-page">
+
+      {/* =========================
+          BACKGROUND MUSIC
+      ========================= */}
+
+      <audio
+        ref={musicRef}
+        src="/happy-birthday.mp3"
+        preload="auto"
+        loop
+      />
 
       <div className="cake-content">
 
@@ -200,7 +222,6 @@ function CakePage() {
         </h1>
 
         <div className="cake-divider" />
-
 
         {/* =========================
             SPRINKLES
@@ -225,7 +246,6 @@ function CakePage() {
             ))}
           </div>
         )}
-
 
         {/* =========================
             CAKE STAGE
@@ -256,7 +276,6 @@ function CakePage() {
             />
           )}
 
-
           {/* =========================
               SPLIT CAKE
           ========================= */}
@@ -283,7 +302,6 @@ function CakePage() {
             </div>
           )}
 
-
           {/* =========================
               CANDLES
           ========================= */}
@@ -293,9 +311,7 @@ function CakePage() {
 
               <Candle
                 position="left"
-                blownOut={
-                  blownCandles.includes("left")
-                }
+                blownOut={blownCandles.includes("left")}
                 onBlow={() =>
                   blowCandle("left")
                 }
@@ -303,9 +319,7 @@ function CakePage() {
 
               <Candle
                 position="middle"
-                blownOut={
-                  blownCandles.includes("middle")
-                }
+                blownOut={blownCandles.includes("middle")}
                 onBlow={() =>
                   blowCandle("middle")
                 }
@@ -313,9 +327,7 @@ function CakePage() {
 
               <Candle
                 position="right"
-                blownOut={
-                  blownCandles.includes("right")
-                }
+                blownOut={blownCandles.includes("right")}
                 onBlow={() =>
                   blowCandle("right")
                 }
@@ -323,7 +335,6 @@ function CakePage() {
 
             </div>
           )}
-
 
           {/* =========================
               KNIFE
@@ -342,7 +353,6 @@ function CakePage() {
 
         </div>
 
-
         {/* =========================
             INSTRUCTION
         ========================= */}
@@ -358,7 +368,6 @@ function CakePage() {
             🔪 Swipe from top to bottom
           </p>
         )}
-
 
         {/* =========================
             AFTER CUT
