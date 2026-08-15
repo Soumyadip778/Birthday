@@ -4,7 +4,6 @@ import "./CakeApp.css";
 
 const CANDLES = ["left", "middle", "right"];
 
-
 /* =========================
    CANDLE
 ========================= */
@@ -55,6 +54,7 @@ function CakePage() {
   const navigate = useNavigate();
 
   const startYRef = useRef(null);
+  const lastYRef = useRef(null);
 
   const [blownCandles, setBlownCandles] = useState([]);
   const [dragging, setDragging] = useState(false);
@@ -95,6 +95,7 @@ function CakePage() {
     }
 
     startYRef.current = e.clientY;
+    lastYRef.current = e.clientY;
 
     setDragging(true);
 
@@ -105,7 +106,7 @@ function CakePage() {
 
 
   /* =========================
-     CAKE SWIPE
+     SMOOTH CAKE SWIPE
      TOP → BOTTOM
   ========================= */
 
@@ -118,17 +119,25 @@ function CakePage() {
       return;
     }
 
+    const currentY = e.clientY;
+
     const distance =
-      e.clientY - startYRef.current;
+      currentY - startYRef.current;
 
-    if (distance >= 100) {
+    lastYRef.current = currentY;
+
+    /*
+      One continuous downward swipe.
+      The cake cuts after a short,
+      natural downward movement.
+    */
+    if (distance >= 70) {
       setCut(true);
-
       setDragging(false);
-
       setShowSprinkles(true);
 
       startYRef.current = null;
+      lastYRef.current = null;
 
       try {
         e.currentTarget.releasePointerCapture(
@@ -143,10 +152,23 @@ function CakePage() {
      END SWIPE
   ========================= */
 
-  const handlePointerUp = () => {
+  const handlePointerUp = (e) => {
     setDragging(false);
 
     startYRef.current = null;
+    lastYRef.current = null;
+
+    try {
+      if (
+        e.currentTarget.hasPointerCapture(
+          e.pointerId
+        )
+      ) {
+        e.currentTarget.releasePointerCapture(
+          e.pointerId
+        );
+      }
+    } catch {}
   };
 
 

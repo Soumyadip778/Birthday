@@ -35,6 +35,28 @@ const songs = [
       "Jaise Shaamon ke Sawere",
       "Tere Paas Main"
     ]
+  },
+  {
+    title: "Sudhu Tomakei Bhalobese",
+    artist: "Another little memory",
+    file: "/Bhalobese.mp3",
+    cover: "/music4.jpg",
+    lyrics: [
+      "Sun saawariya, kahaan tu?",
+      "Teri reet main samajh na paaun",
+      "Ghoom-ghoom-ghoomta hi rahoon"
+    ]
+  },
+  {
+    title: "Dooron Dooron",
+    artist: "Another little memory",
+    file: "/Dooron-Dooron.mp3",
+    cover: "/music5.jpg",
+    lyrics: [
+      "Sun saawariya, kahaan tu?",
+      "Teri reet main samajh na paaun",
+      "Ghoom-ghoom-ghoomta hi rahoon"
+    ]
   }
 ];
 

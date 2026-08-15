@@ -11,7 +11,7 @@ function MemoriesPage() {
       caption: "The beginning ❤️",
     },
     {
-      src: "/memory2.webp",
+      src: "/memory2.jpg",
       caption: "A moment worth keeping",
     },
     {
