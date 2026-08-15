@@ -38,7 +38,7 @@ const songs = [
   },
   {
     title: "Sudhu Tomakei Bhalobese",
-    artist: "One of you favaourites",
+    artist: "One of your favaourites",
     file: "/Bhalobese.mp3",
     cover: "/music4.jpg",
     lyrics: [
