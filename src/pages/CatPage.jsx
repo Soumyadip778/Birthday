@@ -31,21 +31,21 @@ function CatPage() {
           </span>
 
           <h1>
-            Hey you <span>♡</span>
+            Hey Bandhobi <span>♡</span>
           </h1>
 
           <div className="cat-line"></div>
 
           <p>
-            I have something special
+            Your Chaglu has something special for you
             <br />
-            waiting for you...
+            waiting for you Chagli...
           </p>
 
           <p className="cat-small-text">
             But first, here's a little
             <br />
-            something to make you smile.
+            something to make you smile cuz it's the most valuable thing in the world to me.
           </p>
 
           <div className="cat-note">
@@ -59,7 +59,7 @@ function CatPage() {
             onClick={() => navigate("/memories")}
           >
             <span>♡</span>
-            Continue to memories
+            Let's go
             <strong>→</strong>
           </button>
 

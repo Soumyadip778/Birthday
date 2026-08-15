@@ -229,7 +229,7 @@ function MusicPage() {
         <section className="music-text">
 
           <div className="music-label">
-            A SONG FOR YOU
+            SOME SONGS FOR YOU
           </div>
 
           <h1>
@@ -249,9 +249,9 @@ function MusicPage() {
           </div>
 
           <p className="music-message">
-            Maybe this song can say
+            Words are not enough
             <br />
-            what words sometimes can't.
+            to describe you , Your Simplicity , Your Pure Soul
           </p>
 
         </section>

@@ -9,32 +9,32 @@ function WishesPage() {
     {
       title: "Wish One",
       message:
-        "I wish you endless happiness and countless reasons to smile.",
+        "I hope you always have reasons to smile, even on the days when things don't go exactly the way you want. And I hope that whenever life gets a little difficult, you remember that you don't have to handle everything alone. You have people who care about you, and I'm really glad I get to be one of them. ❤️🫂",
     },
     {
       title: "Wish Two",
       message:
-        "I wish that every dream you have slowly finds its way into reality.",
+        "I hope you get everything you're working so hard for. I know I don't always say it, but I'm genuinely proud of you and I want to see you achieve the things you dream about. May you always have the courage to chase what makes you happy. 🌷❤️",
     },
     {
       title: "Wish Three",
       message:
-        "I wish you beautiful moments that become memories you treasure forever.",
+        "I hope you never feel like you have to change yourself just to be accepted. Stay the same crazy, caring, beautiful person who somehow became such an important part of my life. The world needs more people who are genuinely themselves. 🥹🫶🏻",
     },
     {
       title: "Wish Four",
       message:
-        "I wish you strength for the difficult days and even more happiness on the good ones.",
+        "I hope no matter how much life changes, we never lose the friendship we've built. We've already laughed, fought, annoyed each other, shared countless silly conversations, and somehow survived all of it. 😂❤️ I hope there are still years of this craziness waiting for us.",
     },
     {
       title: "Wish Five",
       message:
-        "I wish that you always have people around you who genuinely care about you.",
+        "I hope life takes you to places you've always wanted to see, gives you people who genuinely value you, and gives you countless stories to tell me later. And whenever something amazing happens, I hope I'm still one of the people you think of when you want to share it. 🥹✨",
     },
     {
       title: "Wish Six",
       message:
-        "And most of all, I wish this new year of your life becomes your happiest one yet. ❤️",
+        "And finally, on your 19th birthday, I just wish that this year is kinder to you, happier for you, and full of things that make you genuinely excited about life. Keep smiling, keep being the idiot I know, and please never forget how much you mean to the people lucky enough to know you. Happy 19th, Chagli. 🎂❤️🫂",
     },
   ];
 

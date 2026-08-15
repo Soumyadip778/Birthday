@@ -8,11 +8,11 @@ function MemoriesPage() {
   const memories = [
     {
       src: "/memory1.webp",
-      caption: "The beginning ❤️",
+      caption: "So Beautiful ❤️",
     },
     {
       src: "/memory2.jpg",
-      caption: "A moment worth keeping",
+      caption: "So Elegent",
     },
     {
       src: "/memory3.webp",
@@ -28,7 +28,7 @@ function MemoriesPage() {
     },
     {
       src: "/memory6.webp",
-      caption: "And many more to come ♡",
+      caption: "Just looking like a wow ♡",
     },
   ];
 
@@ -51,19 +51,19 @@ function MemoriesPage() {
         <section className="memories-intro">
 
           <span className="memories-label">
-            A LITTLE COLLECTION
+            GLIMPSES OF THE BIRTHDAY GIRL
           </span>
 
           <h1>
-            the moments
+            the glimpses
             <br />
-            <em>worth</em>
+            <em>that worth</em>
             <br />
             keeping.
           </h1>
 
           <p className="memories-description">
-            A few little moments,
+            A few little glimpses,
             <br />
             saved in one place.
           </p>

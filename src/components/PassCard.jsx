@@ -62,10 +62,10 @@ function RomanticCard() {
           </div>
 
           <div className="photo-caption">
-            <h2>The Birthday Girl</h2>
+            <h2>Happy 19th Birthday!</h2>
 
             <p>
-              The most beautiful soul , Priyani
+              Let's celebrate this special day with love, laughter, and cherished memories.
             </p>
           </div>
 
