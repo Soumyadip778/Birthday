@@ -6,8 +6,8 @@ const songs = [
   {
     title: "Kahe Mose",
     artist: "A song for this moment",
-    file: "/public/kahe-mose.mp3",
-    cover: "/public/music1.webp",
+    file: "/kahe-mose.mp3",
+    cover: "/music1.webp",
     lyrics: [
       "Tu hi jo dekhe",
       "Dil kyon mera",
@@ -17,8 +17,8 @@ const songs = [
   {
     title: "Sun Saawariya",
     artist: "Another little memory",
-    file: "/public/sun-sawariya.mp3",
-    cover: "/public/music2.webp",
+    file: "/sun-sawariya.mp3",
+    cover: "/music2.webp",
     lyrics: [
       "Sun saawariya, kahaan tu?",
       "Teri reet main samajh na paaun",
@@ -28,8 +28,8 @@ const songs = [
   {
     title: "Tere Paas Main",
     artist: "For another moment",
-    file: "/public/tere-pass-main.mp3",
-    cover: "/public/music3.jpg",
+    file: "/tere-pass-main.mp3",
+    cover: "/music3.jpg",
     lyrics: [
       "Jaise Tu Hain Pass Mere",
       "Jaise Shaamon ke Sawere",
