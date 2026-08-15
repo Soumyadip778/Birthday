@@ -77,7 +77,7 @@ function CakePage() {
   const blowCandle = (position) => {
     // Start birthday music on first candle click
     if (!musicStarted && musicRef.current) {
-      musicRef.current.volume = 0.25;
+      musicRef.current.volume = 0.65;
 
       musicRef.current
         .play()
