@@ -38,24 +38,24 @@ const songs = [
   },
   {
     title: "Sudhu Tomakei Bhalobese",
-    artist: "Another little memory",
+    artist: "One of you favaourites",
     file: "/Bhalobese.mp3",
     cover: "/music4.jpg",
     lyrics: [
-      "Sun saawariya, kahaan tu?",
-      "Teri reet main samajh na paaun",
-      "Ghoom-ghoom-ghoomta hi rahoon"
+      "শুধু তোমাকেই ভালোবেসে",
+      "শুকনো নদীতে ডিঙি ভাসিয়েছি",
+      "মোহনার কাছে এসে"
     ]
   },
   {
     title: "Dooron Dooron",
-    artist: "Another little memory",
+    artist: "A song for the heart",
     file: "/Dooron-Dooron.mp3",
     cover: "/music5.jpg",
     lyrics: [
-      "Sun saawariya, kahaan tu?",
-      "Teri reet main samajh na paaun",
-      "Ghoom-ghoom-ghoomta hi rahoon"
+      "Sochu ke milni te bolaanga ki",
+      "Teri taan gallaan’ch…shaayari",
+      "Mitti da banda main, tu taan pari..."
     ]
   }
 ];
