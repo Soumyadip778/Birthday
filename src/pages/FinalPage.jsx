@@ -41,7 +41,7 @@ function FinalPage() {
         </h2>
 
         <p className="final-footer-text">
-          HAPPY BIRTHDAY Priyani· YOU ARE SO LOVED · ALWAYS
+          HAPPY BIRTHDAY PRIYANI · YOU ARE SO LOVED · ALWAYS
         </p>
 
       </section>
@@ -53,7 +53,7 @@ function FinalPage() {
 
       {/* Bottom */}
       <div className="final-bottom">
-        MADE WITH LOVE by SOUMYADIP MAITY · FOREVER
+        MADE WITH LOVE by SOUMYADIP MAITY · FOREVER , SPECIAL THANKS TO SHREYA AND SUJI
       </div>
 
     </main>
